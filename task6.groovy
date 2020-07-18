@@ -1,7 +1,7 @@
 job("task6_code_pull"){
         description("This will copy code from github & filter and send it to different directories present in the minikube based on file extension")
         scm {
-                 github('gouravk842/devops_task3.git' , 'master')
+                 github('gouravk842/devops_task6_jenkinsfile.git' , 'master')
              }
         triggers {
                 scm("* * * * *")
