@@ -1,14 +1,17 @@
 job("task6_code_pull"){
         description("This will copy code from github & filter and send it to different directories present in the minikube based on file extension")
         scm {
-                 github('gouravk842/devops_task6_jenkinsfile.git' , 'master')
+                 github('gouravk842/devops_task6_jenkinsfile' , 'master')
              }
         triggers {
                 scm("* * * * *")
                 
   	}
         steps {
-        shell('''sudo cp -rvf * /root/task3''')
+        shell('''sudo cp -rvf * /root/task3
+                 sudo scp -r /root/task3/*.html docker@192.168.99.104:/docker/home/httpd
+                 sudo scp -r /root/task3/*.php docker@192.168.99.104:/docker/home/php
+        ''')
       }
 }
 
